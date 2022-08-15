@@ -123,3 +123,19 @@ Operating System: Ubuntu 22.04.1 LTS
    10  cat /etc/ssh/sshd.config
    11  cat /etc/ssh/sshd_config
   ```
+ 9. <b>find</b> <br>
+ There are days you wish to locate a file, but you've got no idea its complete file name, the find command can help you locate it. It sho;d be noted important options need too be given to locate the file such as -name, -size etc.
+ To find a file:
+ ```
+  find directory -type -name -size -i
+ ```
+ ```
+ achebeh@achebeh:~$ find . -type f -name "my*.txt"
+    ./myfile2.txt
+ ```
+ 10. <b>pipe</b> <br>
+  The pipe(|) command is used to combine two or more commands together. It works such that the output of the first command is the input for the second.
+  ```
+  achebeh@achebeh:~$ cat myfile2.txt | grep "offers"
+    Baeldung offers a great range of Python tutorials.
+  ```
