@@ -6,35 +6,42 @@ This command is used to display the network interfaces in a linux machine. It is
   ip a
   
 ```
-Its out is;
+Its output is;
 ```
 achebeh@achebeh:~$ ifconfig
 enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
         inet6 fe80::a00:27ff:fe67:703e  prefixlen 64  scopeid 0x20<link>
         ether 08:00:27:67:70:3e  txqueuelen 1000  (Ethernet)
-        RX packets 235177  bytes 326110217 (326.1 MB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 75349  bytes 4566883 (4.5 MB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        ...
 
 enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.56.3  netmask 255.255.255.0  broadcast 192.168.56.255
         inet6 fe80::a00:27ff:fed6:b51a  prefixlen 64  scopeid 0x20<link>
         ether 08:00:27:d6:b5:1a  txqueuelen 1000  (Ethernet)
-        RX packets 6231  bytes 548965 (548.9 KB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 4848  bytes 934280 (934.2 KB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        ...
 
 lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         inet 127.0.0.1  netmask 255.0.0.0
         inet6 ::1  prefixlen 128  scopeid 0x10<host>
         loop  txqueuelen 1000  (Local Loopback)
-        RX packets 242  bytes 29391 (29.3 KB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 242  bytes 29391 (29.3 KB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        ...
 ```
 
-<img src="ifconfig.png" alt="ifconfig" width="400"/>
+2. <b>ping</b> <br>
+  This command is really useful in networking in the linux OS, it helps to check connctivity between two nodes. It can also be used to check if your server has internet connection.
+  ```
+  achebeh@achebeh:~$ ping google.com
+PING google.com (216.58.223.206) 56(84) bytes of data.
+64 bytes from los02s03-in-f14.1e100.net (216.58.223.206): icmp_seq=1 ttl=63 time=5.36 ms
+64 bytes from los02s03-in-f14.1e100.net (216.58.223.206): icmp_seq=2 ttl=63 time=5.31 ms
+64 bytes from los02s03-in-f14.1e100.net (216.58.223.206): icmp_seq=3 ttl=63 time=6.40 ms
+64 bytes from los02s03-in-f14.1e100.net (216.58.223.206): icmp_seq=4 ttl=63 time=5.99 ms
+64 bytes from los02s03-in-f14.1e100.net (216.58.223.206): icmp_seq=5 ttl=63 time=5.77 ms
+64 bytes from los02s03-in-f14.1e100.net (216.58.223.206): icmp_seq=6 ttl=63 time=5.02 ms
+
+--- google.com ping statistics ---
+6 packets transmitted, 6 received, 0% packet loss, time 5010ms
+rtt min/avg/max/mdev = 5.017/5.641/6.400/0.464 ms
+  ```
+
