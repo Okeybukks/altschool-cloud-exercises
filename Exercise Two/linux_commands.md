@@ -6,7 +6,7 @@ This command is used to display the network interfaces in a linux machine. It is
   ip a
   
 ```
-Its output is;
+
 ```
 achebeh@achebeh:~$ ifconfig
 enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -53,4 +53,29 @@ rtt min/avg/max/mdev = 5.017/5.641/6.400/0.464 ms
    1826 pts/0    00:00:00 bash
   49507 pts/0    00:00:00 ps
   ```
-4. <b>ps</b> <br>
+4. <b>zip</b> <br>
+  To zip files into one zip file, the zip command comes pretty handy.
+  To zip a file:
+  ```
+    zip zip_file_name.zip file1, file2, file3 ...
+  ```
+  
+  ```
+  achebeh@achebeh:~$ zip f.zip m.txt myfile2.txt newfile.txt 
+  adding: m.txt (deflated 34%)
+  adding: myfile2.txt (deflated 33%)
+  adding: newfile.txt (deflated 33%)
+  ```
+5. <b>cal</b> <br>
+  A useful command used by system adminstrator to check calender of the current month and even the whole year is the cal command.
+  
+  ```
+  achebeh@achebeh:~$ cal
+    August 2022       
+Su Mo Tu We Th Fr Sa  
+    1  2  3  4  5  6  
+ 7  8  9 10 11 12 13  
+14 15 16 17 18 19 20  
+21 22 23 24 25 26 27  
+28 29 30 31  
+```
