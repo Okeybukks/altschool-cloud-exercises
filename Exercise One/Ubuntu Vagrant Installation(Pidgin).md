@@ -159,12 +159,12 @@ No be here e go end oo, we go need do some small configuration for VirtualBox, o
 Oya follow this steps to configure am.
 
 
-![1.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1660176289747/XBWpixlZj.png align="left")
+<img src="left.png.webp">
 
 You go select VM wer we done install, take note say vagrant the automatically create the VM for the VirtualBox during in installation.
 
 
-![2.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1660176391150/8fhhkfCxs.png align="left")
+<img src="right.png.webp">
 
 Select Settings, choose Network then finally select Adapter 2 to add another network adapter. For the "Attached to" dropdown select "Host-only Adapter" then for "Name" dropdown select "vboxnet0", then click OK.
 
