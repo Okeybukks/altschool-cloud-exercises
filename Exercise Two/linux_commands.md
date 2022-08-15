@@ -71,11 +71,55 @@ rtt min/avg/max/mdev = 5.017/5.641/6.400/0.464 ms
   
   ```
   achebeh@achebeh:~$ cal
-    August 2022       
-Su Mo Tu We Th Fr Sa  
-    1  2  3  4  5  6  
- 7  8  9 10 11 12 13  
-14 15 16 17 18 19 20  
-21 22 23 24 25 26 27  
-28 29 30 31  
+        August 2022       
+    Su Mo Tu We Th Fr Sa  
+        1  2  3  4  5  6  
+     7  8  9 10 11 12 13  
+    14 15 16 17 18 19 20  
+    21 22 23 24 25 26 27  
+    28 29 30 31  
 ```
+6. <b>df</b> <br>
+  The df(Disk File) command is used to retrieve the data of the file system in your machine.
+  ```
+  achebeh@achebeh:~$ df -h
+    Filesystem                         Size  Used Avail Use% Mounted on
+    tmpfs                               98M  1.2M   97M   2% /run
+    /dev/mapper/ubuntu--vg-ubuntu--lv  8.1G  6.7G  985M  88% /
+    tmpfs                              486M     0  486M   0% /dev/shm
+    tmpfs                              5.0M     0  5.0M   0% /run/lock
+    /dev/sda2                          1.7G  244M  1.4G  15% /boot
+    tmpfs                               98M  4.0K   98M   1% /run/user/1000
+  ```
+7. <b>hostnamectl</b> <br>
+  If you wish to get information such as kernel version, OS your machine is running on, hostname, hardware model etc., the hostnamectl is your best bet to get such information.
+  ```
+  achebeh@achebeh:~$ hostnamectl
+ Static hostname: achebeh
+       Icon name: computer-vm
+         Chassis: vm
+      Machine ID: 1c091aa57527486c8eb855f373b8300b
+         Boot ID: c86af5d6d2b7460cbac7e8e91e8c07f2
+  Virtualization: oracle
+Operating System: Ubuntu 22.04.1 LTS              
+          Kernel: Linux 5.15.0-43-generic
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox
+ ```
+ 8. <b>history</b> <br>
+  You get to a point where as an administrator you wish to see the linux commands you've be running, the history command is used to retrieve previously ran commands.
+  ```
+  achebeh@achebeh:~$ head | history
+    1  exit
+    2  clear
+    3  ifconfig
+    4  sudo apt install net-tools
+    5  ifconfig
+    6  shutdown
+    7  sudo shutdown
+    8  clear
+    9  cat /etc/*release*
+   10  cat /etc/ssh/sshd.config
+   11  cat /etc/ssh/sshd_config
+  ```
