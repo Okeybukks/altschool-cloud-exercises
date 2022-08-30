@@ -1,0 +1,164 @@
+commit 37b914e2d533d496017ff8e1db7decf4ca3a03cb
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Tue Aug 30 02:04:47 2022 +0100
+
+    Create PHP installation readme file.md
+
+commit 7d9ddbc869c5035a3322e45c68e70ef478972a1b
+Merge: 779a546 a92e518
+Author: Okechukwu Achebe <achebepeter94@gmail.com>
+Date:   Tue Aug 30 01:24:02 2022 +0100
+
+    Merge branch 'main' of https://github.com/Okeybukks/altschool-cloud-exercises
+    
+    Added Exercise Four to Repo
+
+commit 779a54602feb408bdf4ee5227fee1c123f2073ab
+Author: Okechukwu Achebe <achebepeter94@gmail.com>
+Date:   Tue Aug 30 01:23:12 2022 +0100
+
+    Added Exercise Four to Repo
+
+commit a92e518733964794cb851d1255b2ea17fd3eb409
+Author: Okechukwu Achebe <achebepeter94@gmail.com>
+Date:   Tue Aug 30 01:17:30 2022 +0100
+
+    Change folder name to ubuntu20.04
+
+commit 73740f9ff6b9ce1d0b7e5cbd9547c1afa8364b27
+Author: Okechukwu Achebe <achebepeter94@gmail.com>
+Date:   Tue Aug 30 01:12:08 2022 +0100
+
+    Added Exercise Four to Repo
+
+commit f805222c3e5e390c497cb3ed4618a7d59950a864
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Fri Aug 26 22:12:44 2022 +0100
+
+    script file to create user and groups in linux
+
+commit 3e1e55dad7bf795a97e22d81c68d6ca0f05029ab
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 22 18:40:35 2022 +0100
+
+    Create How to create User and Group in Linux.md
+
+commit ccff456eaef0c84238f6c92a24c2b6bd62a6cf6e
+Author: Okechukwu Achebe <achebepeter94@gmail.com>
+Date:   Mon Aug 22 17:20:48 2022 +0100
+
+    Uploaded files for exercise three
+
+commit 579f846330978468b2047b81f7ce84718fb9a27f
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:47:14 2022 +0100
+
+    Create README.md
+
+commit 1df7a1f41f6c1c66371985f0d931f991841c2336
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:45:32 2022 +0100
+
+    Update Ubuntu Vagrant Installation(Pidgin).md
+
+commit 9ad4382b10364ef23b5879d3bbfcec7a0db28f31
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:44:04 2022 +0100
+
+    Add files via upload
+
+commit b217853b347f4cb4e5fdf5136acfb916cc75dc56
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:42:16 2022 +0100
+
+    Update Ubuntu Vagrant Installation(Pidgin).md
+
+commit 5f60900d959a02ca90cb534415d8c6c616dbbaf0
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:39:39 2022 +0100
+
+    Add files via upload
+
+commit e546b344bc93e5c4d00eb9de9d7fcf31855dea9e
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:39:17 2022 +0100
+
+    Create Ubuntu Vagrant Installation(Pidgin).md
+
+commit a0c9280b12d0f93ab282788ad1d3e2463b2b0702
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:29:51 2022 +0100
+
+    Update linux_commands.md
+
+commit 00c750f8dd6a515a03ec84c4e7628e8c3c0e4807
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 15:28:25 2022 +0100
+
+    Update linux_commands.md
+
+commit 2ea1eeaf69d3cc206a00b1578b57ec405a7a86d4
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 14:57:04 2022 +0100
+
+    Update linux_commands.md
+
+commit fdfe097e4c1493d9b59348f07ec0ad58ead97857
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 14:41:45 2022 +0100
+
+    Update linux_commands.md
+
+commit 36e02946da1d47ae0afa61cf91f16b25376ef2e7
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 14:26:40 2022 +0100
+
+    Update linux_commands.md
+
+commit 7e7858aed5d6823736e1c9d20392944934fb0e55
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 14:14:25 2022 +0100
+
+    Update linux_commands.md
+
+commit ddc1ac6a7778bf8a6dcce67c6c15130a10a5367c
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 14:05:05 2022 +0100
+
+    Update linux_commands.md
+
+commit 3642905b12c4244c0cd7b2c8880b264b4d7f0ca9
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 14:03:39 2022 +0100
+
+    Update linux_commands.md
+
+commit d723f1a958c1081f5a128c0f7aeb72b855419f41
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 00:44:58 2022 +0100
+
+    Update linux_commands.md
+
+commit b9a2c720caac2bd14eea2b558eb973ee5de4ba1d
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 00:44:30 2022 +0100
+
+    Update linux_commands.md
+
+commit 988b4c004f4f3843e3df4122542a9d5e3762c3be
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 00:44:01 2022 +0100
+
+    Update linux_commands.md
+
+commit ba6c4bba461e723140aa8aea4fdbe7bcbeb4d1bb
+Author: Achebe Okechukwu Peter <52535893+Okeybukks@users.noreply.github.com>
+Date:   Mon Aug 15 00:43:35 2022 +0100
+
+    Update linux_commands.md
+
+commit 80aff37fd69da796afc54fadf7d9450cf78a0341
+Author: Okechukwu Achebe <achebepeter94@gmail.com>
+Date:   Mon Aug 15 00:32:02 2022 +0100
+
+    my first commit
