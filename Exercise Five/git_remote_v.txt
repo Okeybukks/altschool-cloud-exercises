@@ -1,2 +1,2 @@
-origin	https://github.com/Okeybukks/altschool-cloud-exercises.git (fetch)
-origin	https://github.com/Okeybukks/altschool-cloud-exercises.git (push)
+origin  https://gitlab.com/altschool-cloud-engineering-projects/altschool-cloud-exercises.git (fetch)
+origin  https://gitlab.com/altschool-cloud-engineering-projects/altschool-cloud-exercises.git (push)
