@@ -1,0 +1,28 @@
+---
+- name: Plybook for Apache Installation
+  hosts: all_servers
+  remote_user: root
+  become: true
+  tasks:
+          - name: Installation of Apache Server
+            apt:
+                    name: apache2
+                    state: present
+
+          - name: Setting of timezone to Africa/Lagos
+            timezone:
+                    name: Africa/Lagos
+
+          - name: Setting up index page.
+            shell: |
+                   echo '<?php
+                   echo
+                        date("F d, Y h:i:s A e", time());
+                        ?>' > /var/www/html/index.php
+          
+          - name: Restarting Apache Service
+            service:
+                    name: apache2
+                    state: restarted
+
+
