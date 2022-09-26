@@ -1,0 +1,43 @@
+---
+- name: "A Playbook to create Admin, Support and Engineering Users and Group"
+  hosts: all_servers
+  become: yes
+  vars:
+         my_groups:
+                  - { user: admin_user, group: admin }
+                  - { user: support_user, group: support }
+                  - { user: engineering_user, group: engineering }
+  tasks:
+          - name: "Creation of Groups"
+            group:
+                    name: "{{ item.group }}"
+                    state: present
+            loop: "{{ my_groups }}"
+
+          - name: "Add admin group to sudoers"
+            blockinfile:
+                    path: /etc/sudoers
+                    block: |
+                            # Members of the admin group may gain root privileges
+                            %admin ALL=(ALL) ALL
+
+          - name: "Creation of User"
+            user:
+                    name: "{{ item.user }}"
+                    password: "{{ 'vagrant' | password_hash('sha512') }}"
+                    shell: /bin/bash
+                    group: "{{ item.group }}"
+            loop: "{{ my_groups }}"
+
+          - name: "Create a 2048-bit SSH key for admin user in ~admin_user/.ssh/id_rsa"
+            user:
+                    name: admin_user
+                    generate_ssh_key: yes
+                    ssh_key_bits: 2048
+                    ssh_key_file: .ssh/id_rsa
+            
+
+          
+
+                    
+
