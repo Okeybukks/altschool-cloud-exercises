@@ -1,0 +1,24 @@
+---
+- name: "PHP 7.4 Installation playbook for Ubuntu"
+  hosts: all_servers
+  become: yes
+  tasks:
+
+          - name: "Adding ondrej repo to system apt repo"
+            apt_repository:
+                    repo: ppa:ondrej/php
+                    state: present
+            when: ansible_distribution == "Ubuntu"
+
+          - name: "Updating system apt repo"
+            apt:
+                    update_cache: yes
+
+            when: ansible_distribution == "Ubuntu"
+
+          - name: "Installation of php 7.4"
+            apt:
+                    name: php7.4
+                    state: present
+            when: ansible_distribution == "Ubuntu"
+
