@@ -1,0 +1,13 @@
+---
+- name: Playbook for Postgres-13 Installation and creation of user
+  hosts: laravelserver
+  become: true
+  tasks:
+          - name: Transfer script from host server
+            copy:
+                    src: /home/vagrant/ansible_miniproject/postgres.sh
+                    dest: /home/admin
+                    mode: '0777'
+
+          - name: Executing Postgres Installation script
+            command: bash /home/admin/postgres.sh

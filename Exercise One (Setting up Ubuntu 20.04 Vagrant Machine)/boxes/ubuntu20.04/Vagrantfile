@@ -18,13 +18,13 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "target-machine1" do |vm2|
-    vm2.vm.hostname = "target-machine1"
+    vm2.vm.hostname = "ubuntu-target-machine1"
     vm2.vm.box = "ubuntu/focal64"
     vm2.vm.network "private_network", type: "dhcp"
 
     vm2.vm.provider "virtualbox" do |vb|
   #    vb.gui = true
-       vb.name = "target-machine1"
+       vb.name = "ubuntu-target-machine1"
        vb.memory = "1024"
     end
 

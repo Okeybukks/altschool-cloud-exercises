@@ -1,0 +1,212 @@
+---
+- name: A playbook for laravel deployment
+  hosts: laravelserver
+  become: yes
+  vars:
+          password: "@Keybukk51995"
+          ip: "192.168.56.25"
+  tasks:
+          - name: Update and Upgrade apt repository
+            apt:
+                    upgrade: yes
+                    update_cache: yes
+                    cache_valid_time: 86400
+
+          - name: Installation of Apache Server
+            apt:
+                    name: apache2
+                    state: present
+
+          - name: Enabling Apache Service
+            service:
+                    name: apache2
+                    enabled: yes
+
+          - name: Installing PHP dependencies
+            apt:
+                    name:
+                            - ca-certificates
+                            - apt-transport-https
+                            - software-properties-common
+                    state: present
+
+          - name: Adding Deb Sury Repo
+            shell: |
+                    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+                    sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+                    '
+          - name: Update apt repository
+            apt:
+                    update_cache: yes
+
+          - name: Installation of PHP8.1 and its dependencies
+            apt:
+                    name:
+                            - php8.1
+                            - php8.1-mysql
+                            - libapache2-mod-php
+                            - php8.1-imap
+                            - php8.1-ldap
+                            - php8.1-xml
+                            - php8.1-fpm
+                            - php8.1-curl
+                            - php8.1-mbstring
+                            - php8.1-zip
+                            - curl
+                            - unzip
+                    state: present
+
+          - name: Installing Composer
+            shell: curl -sS https://getcomposer.org/installer | php
+
+          - name: Move composer to bin folder
+            shell: mv composer.phar /usr/local/bin/composer 
+
+          - name: set permissions for composer file
+            file:
+                    path: /usr/local/bin/composer
+                    mode: a+x
+                    state: file
+
+          - name: Installation of git
+            apt:
+                    name: git
+                    state: present
+
+          - name: Changing to /var/www/html and clone app file
+            command: chdir=/home/vagrant git clone https://github.com/f1amy/laravel-realworld-example-app.git
+
+
+          - name:  Creating laravel app
+            command: composer create-project
+            args:
+                    chdir: /home/vagrant/laravel-realworld-example-app
+            environment:
+                    COMPOSER_ALLOW_SUPERUSER: "1"
+
+          - name: Moving Project app to /var/www/html
+            shell: mv /home/vagrant/laravel-realworld-example-app /var/www/html/
+
+          - name: Recursively change ownership of Laravel app folder
+            file:
+                    path: /var/www/html/laravel-realworld-example-app
+                    state: directory
+                    recurse: yes
+                    owner: www-data
+                    group: www-data
+                    mode: 0775
+
+          - name: set permissions for Laravel storage folder
+            file:
+                    path: /var/www/html/laravel-realworld-example-app/storage
+                    state: directory
+                    recurse: yes
+                    mode: 0755
+
+
+          - name: Creating apache conf file for app
+            shell: |
+                    echo '<VirtualHost *:80 *:3000>
+                                 ServerAdmin admin@example.com
+                                 ServerName laravel.example.com
+                                 DocumentRoot /var/www/html/laravel-realworld-example-app/public/
+
+                                 <Directory /var/www/html/laravel-realworld-example-app/public/>
+                                         Options Indexes FollowSymLinks MultiViews
+                                         AllowOverride All
+                                         Order allow,deny
+                                         allow from all
+                                         Require all granted
+                                 </Directory>
+
+                                 LogLevel debug
+                                 ErrorLog ${APACHE_LOG_DIR}/error.log
+                                 CustomLog ${APACHE_LOG_DIR}/access.log combined
+                           </VirtualHost>' > /etc/apache2/sites-available/laravel.conf
+
+          - name: Setting the laravel.conf file as default for apache
+            command: '{{ item }}'
+
+            with_items:
+                    - a2enmod rewrite
+                    - a2ensite laravel.conf
+                    - a2dissite 000-default.conf
+                
+          - name: Uncommenting Lines in web.php file
+            replace:
+                    path: /var/www/html/laravel-realworld-example-app/routes/web.php
+                    regexp: '^\/\*Route'
+                    replace: 'Route'
+
+          - name: Uncommenting Line in web.php file
+            replace:
+                    path: /var/www/html/laravel-realworld-example-app/routes/web.php
+                    regexp: '^\}\)\;\*\/'
+                    replace: '});'
+
+          - name: Rstarting Apache
+            service:
+                    name: apache2
+                    state: restarted
+
+          - name: Python installation for MySQL
+            package:
+                    name: python3-mysqldb
+                    state: present
+
+          - name: MariaDB installation
+            package:
+                    name: default-mysql-server
+                    state: present
+
+          - name: Creation of database
+            mysql_db:
+                    name: laravel
+                    state: present
+                    login_user: root
+                    login_password: ""
+                    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+          - name: Create laravel user
+            mysql_user:
+                    name: laravel_user
+                    priv: 'laravel.*:ALL,GRANT'
+                    password: "{{ password }}"
+                    state: present
+                    login_user: root
+                    login_password: ""
+                    login_unix_socket: /run/mysqld/mysqld.sock
+
+          - name: Editing the .env file and also generating laravel key
+            command: chdir=/var/www/html/laravel-realworld-example-app mv .env.example .env
+
+          - name: Generate php key
+            command: chdir=/var/www/html/laravel-realworld-example-app php artisan key:generate
+
+          - name: Updating .env file
+            lineinfile:
+                    path: /var/www/html/laravel-realworld-example-app/.env
+                    regexp: "^{{ item.key | regex_escape() }}="
+                    line: "{{ item.key }}={{ item.value }}"
+            with_dict:
+                    - 'DB_CONNECTION': 'mysql'
+                    - 'DB_HOST': "localhost" 
+                    - 'DB_PORT': '3306'
+                    - 'DB_DATABASE': 'laravel'
+                    - 'DB_USERNAME': 'laravel_user'
+                    - 'DB_PASSWORD': "{{ password }}"
+
+          - name: Migrating Database data
+            command: chdir=/var/www/html/laravel-realworld-example-app php artisan migrate:refresh --seed
+
+          - name: Reload Apache service
+            service:
+                    name: apache2
+                    state: restarted
+
+          - name: Executing Postgres Installation script
+            script: /home/vagrant/ansible_miniproject/postgres.sh
+                      
+            
+
+        

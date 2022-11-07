@@ -1,0 +1,4 @@
+debian-machine ansible_host=ec2-3-85-201-154.compute-1.amazonaws.com  ansible_ssh_user=admin ansible_ssh_private_key_file=altschool-miniproject.pem 
+
+[laravelserver]
+debian-machine

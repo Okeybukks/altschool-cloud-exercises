@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/achebe/Desktop/altschool-cloud-exercises/Exercise One/boxes/ubuntu20.04","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/achebe/Desktop/altschool-cloud-exercises/Exercise One (Setting up Ubuntu 20.04 Vagrant Machine)/boxes/ubuntu20.04","disabled":false,"__vagrantfile":true}}}
