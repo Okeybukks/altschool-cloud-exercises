@@ -1,0 +1,9 @@
+server {
+         listen 80;
+         #listen [::]:80;
+         server_name altschoolminiproject.software www.altschoolminiproject.software;
+         location / {
+                 include proxy_params;
+                 proxy_pass http://unix:/home/ubuntu/flask/env.sock;
+                 }
+}

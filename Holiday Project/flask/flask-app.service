@@ -1,0 +1,15 @@
+[Unit]
+Description=Gunicorn instance to serve flaskapp
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/ubuntu/flask
+Environment="PATH=/home/ubuntu/flask/env/bin"
+# ExecStart=/home/ubuntu/flask/env/bin/gunicorn -b altschool-LB-236056692.us-east-1.elb.amazonaws.com:8000 -w 2 wsgi:app
+ExecStart=/home/ubuntu/flask/env/bin/gunicorn -w 2 -b unix:env.sock -m 007 wsgi:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

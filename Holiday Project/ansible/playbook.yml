@@ -1,0 +1,92 @@
+---
+- name: A playbook for python flask deployment
+  hosts: web_servers
+  become: yes
+  tasks:
+          - name: Updating apt repo
+            apt:
+                    update_cache: yes
+
+          - name: Installation of NGINX 
+            apt:
+                    name: nginx
+                    state: present
+
+          - name: Enabling NGINX Service
+            service:
+                    name: nginx
+                    enabled: yes
+
+          - name: Starting the NGINX service
+            service:
+                    name: nginx
+                    state: started
+         
+          - name: Installing python 3.8, python-dev, python-venv
+            apt:
+                    name:
+                            - python3.8
+                            - python3.8-dev
+                            - python3.8-venv
+                    state: present
+        
+          - name: Create Flask folder
+            file:
+                    path: /home/ubuntu/flask
+                    state: directory
+
+          - name: Create a virtual environment for the flask app
+            command: python3.8 -m venv env
+            args:
+                    chdir: /home/ubuntu/flask
+
+          - name: Installing flask and gunicorn
+            pip:
+                    name:
+                            - gunicorn
+                            - flask
+                    virtualenv: /home/ubuntu/flask/env/
+                    virtualenv_command: /usr/bin/python3.8 -m venv
+
+          - name: Copy flask app files to remote servers
+            copy:
+                    src: '{{item}}'
+                    dest: /home/ubuntu/flask
+            loop:
+                    - /home/ubuntu/flask/app.py
+                    - /home/ubuntu/flask/wsgi.py
+                    - /home/ubuntu/flask/templates
+          
+                      #- name: Configuring gunicorn
+                      #command: gunicorn --bind 0.0.0.0:8000 wsgi:app   
+                      #args:
+                      #chdir: /home/ubuntu/flask/
+
+          - name: Copy flask service app file to remote server
+            copy:
+                    src: /home/ubuntu/flask/flask-app.service
+                    dest: /etc/systemd/system/flask-app.service
+
+          - name: Starting flask app service
+            service:
+                    name: flask-app
+                    state: started
+
+          - name: Enabling flask app service
+            service:
+                    name: flask-app
+                    enabled: yes
+
+          - name: Copy NGINX configuration file to remote server
+            copy:
+                    src: /home/ubuntu/flask/flask_app
+                    dest: /etc/nginx/sites-available/flask_app
+
+          - name: Link NGINX available sites to enabled sites
+            command: ln -s /etc/nginx/sites-available/flask_app /etc/nginx/sites-enabled
+
+          - name: Restart Nginx
+            service:
+                    name: nginx
+                    state: restarted
+
