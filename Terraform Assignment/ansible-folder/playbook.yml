@@ -1,0 +1,46 @@
+---
+- name: Playbook for Apache2 webserver installation and serving web files
+  hosts: webservers
+  become: true
+  tasks:
+          - name: Update and Upgrade apt repository
+            apt:
+                    upgrade: yes
+                    update_cache: yes
+
+          - name: Set timezone to Africa/Lagos
+            timezone:
+                    name: Asia/Tokyo
+
+          - name: Install latest version of Apache
+            apt:
+                    name: apache2
+                    update_cache: yes
+                    state: latest
+
+          - name: Enabling Apache Service
+            service:
+                    name: apache2
+                    enabled: yes
+
+          - name: Installation of PHP8.1 and its dependencies
+            apt:
+                    name:
+                            - php8.1
+                            - libapache2-mod-php
+
+          - name: Copy php file to /var/www/html folder
+            copy:
+                    src: index.php
+                    dest: /var/www/html
+                    mode: '0644'
+
+          - name: Remove Default Apache index file
+            file:
+                    path: /var/www/html/index.html
+                    state: absent
+
+          - name: Restart Apache service
+            service:
+                    name: apache2
+                    state: restarted
