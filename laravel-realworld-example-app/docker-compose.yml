@@ -1,0 +1,54 @@
+version: '3'
+services:
+    web:
+        build:
+            context: ./docker/web
+        container_name: app
+        volumes:
+            - ./:/var/www/laravel_app
+        networks:
+            - laravel
+        depends_on:
+            db:
+                condition: service_healthy
+
+    apache:
+        build:
+            context: ./docker/apache
+        container_name: apache
+        depends_on:
+            - web
+        ports:
+            - 80:80
+        volumes:
+            - ./:/var/www/laravel_app
+            - ./docker/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+        networks:
+            - laravel
+
+
+    db:
+        image: mysql
+        restart: unless-stopped
+        tty: true
+        container_name: db
+        volumes:
+            - ./mydata:/var/lib/mysqlß
+        ports:
+            - 3306:3306
+        networks:
+            - laravel
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_PASSWORD: secret
+            MYSQL_USER: laravel_user
+            MYSQL_DATABASE: laravel
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 40s
+            retries: 3
+
+networks:
+  laravel:
