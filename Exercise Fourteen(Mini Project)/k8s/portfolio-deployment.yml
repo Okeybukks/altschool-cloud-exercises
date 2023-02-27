@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-replicas
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      name: myapp
+  template:
+    metadata:
+      name: myapp
+      labels:
+        name: myapp
+    spec:
+      containers:
+       - name: myapp
+         image: achebeh/my-react-portfolio
+         resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+         ports:
+          - containerPort: 80
